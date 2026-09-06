@@ -1,13 +1,9 @@
 import { Pressable, Text, View } from "react-native";
 import { useContext } from "react";
 
-import { ThemeContext, useTheme } from "./ThemeContext";
-export function ThemeScreen() {
-  const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used inside ThemeProvider");
-  }
-  const { themeName, toggleTheme } = context;
+import { useTheme } from "./ThemeContext";
+export function ThemeScreenUsingUseTheme() {
+  const { themeName, toggleTheme } = useTheme();
   return (
     <View
       style={{
@@ -19,7 +15,7 @@ export function ThemeScreen() {
     >
       <Pressable onPress={toggleTheme}>
         <Text style={{ color: themeName === "dark" ? "white" : "black" }}>
-          Current theme Using useContext: {themeName}
+          Current theme using useTheme: {themeName}
         </Text>
       </Pressable>
     </View>
