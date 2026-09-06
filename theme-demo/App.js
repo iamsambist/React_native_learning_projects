@@ -4,10 +4,11 @@ import { ThemeProvider } from "./app/theme/ThemeContext";
 import { ThemeScreen } from "./app/theme/ThemeScreen";
 import { ThemeScreenUsingUseTheme } from "./app/theme/TSWithUseContext";
 import { useContext } from "react";
+import { ZThemeScreen } from "./app/theme/Zustand/ZThemeScreen";
 export default function App() {
   return (
     <ThemeProvider>
-      <ThemeScreenUsingUseTheme />
+      <ZThemeScreen />
     </ThemeProvider>
   );
 }
