@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
+    "@expo-google-fonts/dm-sans": "^0.4.2",
     "expo": "~57.0.20",
+    "expo-font": "~57.0.3",
     "expo-status-bar": "~57.0.1",
+    "fontkit": "^2.0.4",
     "react": "19.2.3",
     "react-native": "0.86.3",
     "zustand": "^5.0.15"

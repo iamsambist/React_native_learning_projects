@@ -1,0 +1,52 @@
+pnpm expo install expo-font @expo-google-fonts/dm-sans
+
+--> Because DM Sans is a google font, we don't need manual downloading and asset managemnet
+--> Just after intalling we can get all the fonts and useFonts() hook to load our fonts into project.
+--> also open node modules google fonts and we see all listed font Family
+--> now add font family to any Views we can see the result.
+
+
+if we are not using Google font instead have .ttf files
+
+add font inside assets/fonts/ 
+and load manually like this 
+
+const [fontsLoaded] = useFonts({
+  'DMSans-Regular': require('./assets/fonts/DMSans-Regular.ttf'),
+  'DMSans-Bold': require('./assets/fonts/DMSans-Bold.ttf'),
+});
+
+When we put .ttf file into app/assets/fonts -- here we actually don't know the Font Family Name & Weight 
+Regular or Bold which we need to apply the font.
+
+So to just find the Font Family details 
+
+- we install  (* this is completly different setup our project donot need it)
+pnpm install fontkit
+
+-import function like this 
+const fontkit = require("fontkit");
+const font = fontkit.openSync("./app/assets/fonts/InflateptxBase-ax3da.ttf");
+
+-- and see the details like this 
+
+console.log("Family Name:", font.familyName);
+console.log("Full Name:", font.fullName);
+console.log("PostScript Name:", font.postscriptName);
+console.log("Subfamily:", font.subfamilyName);
+
+Output: 
+Family Name: InflatePTx Base
+Full Name: InflatePTx Base
+PostScript Name: InflatePTx-Base
+Subfamily: Regular
+
+now to load this Font we write somthing like this 
+
+  const [fontsLoaded] = useFonts({
+    "InflatePTx-Base": require("./app/assets/fonts/InflateptxBase-ax3da.ttf"),
+  });
+
+-- Impotant to understand useFonts() does not care it is google font or not it just load the font for your use.
+
+
